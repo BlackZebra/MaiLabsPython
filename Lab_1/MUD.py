@@ -23,10 +23,11 @@ def start():
     current_location = 'square'
     locations = {'square', 'forge', 'mill', 'inn', 'road'}
     while way != 'quit':
-        print('Choose: {}/{}/{}/{}/{}'.format(*locations))
-        print('Type search to find something here')
-        print('\nType "quit" to finish game')
+        print('\nChoose: {}/{}/{}/{}/{}'.format(*locations))
+        print('Type "search" to find something here')
+        print('Type "quit" to finish game')
         way = input()
+        print()
         if current_location != way:
             if way == 'road':
                 current_location = 'road'
@@ -43,6 +44,8 @@ def start():
             elif way == 'forge':
                 current_location = 'forge'
                 forge()
+            elif way == 'search':
+                search(current_location)
         else:
             print('You already there!')
     return
@@ -99,6 +102,7 @@ def forge():
 
 
 def search(current_location):
+    print('*____________________________*')
     print('You are searching something here...')
     if current_location == 'square':
         print('You found a bunch of garbage here and nothing more.')
@@ -112,6 +116,7 @@ def search(current_location):
         print('Here is a pile of scrap metal, but you don’t see anything useful for yourself.')
     else:
         print('Where are you man?? And how did you come there?')
+    print('\n*____________________________*')
 
 def cls():
     os.system('cls' if os.name == 'nt' else 'clear')
